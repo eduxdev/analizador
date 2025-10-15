@@ -12,6 +12,8 @@ from tac_optimizer import TACOptimizer
 from tac_interpreter import TACInterpreter
 from machine_code_generator import MachineCodeGenerator
 from reglas_semanticas import REGLAS_SEMANTICAS, obtener_reglas_por_fase, obtener_nombre_fase
+from lr_parser import LRParser
+from formal_properties import FormalPropertiesAnalyzer
 
 
 # Colores Dark Mode moderno - Tema Océano Nocturno
@@ -337,6 +339,8 @@ class PythonCompilerIDE:
         self.create_execution_tab()
         self.create_semantic_rules_tab()
         self.create_grammar_tab()
+        self.create_lr_parser_tab()
+        self.create_formal_properties_tab()
         
         return output_frame
     
@@ -512,6 +516,59 @@ class PythonCompilerIDE:
         grammar_text.pack(fill=tk.BOTH, expand=True)
         grammar_text.insert('1.0', self.get_grammar_content())
         grammar_text.config(state='disabled')
+    
+    def create_lr_parser_tab(self):
+        """Crea la pestaña de Análisis LR con Tabla de Parsing"""
+        tab = tk.Frame(self.notebook, bg=COLORS['bg_editor'])
+        self.notebook.add(tab, text="🔧 Parser LR")
+        
+        self.lr_parser_text = scrolledtext.ScrolledText(
+            tab,
+            bg=COLORS['bg_editor'],
+            fg=COLORS['fg_primary'],
+            font=tkfont.Font(family='Consolas', size=9),
+            relief=tk.FLAT,
+            padx=15,
+            pady=15,
+            wrap=tk.WORD
+        )
+        self.lr_parser_text.pack(fill=tk.BOTH, expand=True)
+        
+        # Generar y mostrar tabla LR
+        lr_parser = LRParser()
+        content = lr_parser.print_parsing_table()
+        content += "\n\n" + "=" * 100 + "\n"
+        content += "NOTA: Esta es la tabla LR(1) con autómata de pila explícito\n"
+        content += "Completa el Punto 8: Autómatas de Pila para Análisis Sintáctico\n"
+        content += "=" * 100 + "\n"
+        
+        self.lr_parser_text.insert('1.0', content)
+        self.lr_parser_text.config(state='disabled')
+    
+    def create_formal_properties_tab(self):
+        """Crea la pestaña de Propiedades Formales"""
+        tab = tk.Frame(self.notebook, bg=COLORS['bg_editor'])
+        self.notebook.add(tab, text="🎓 Propiedades")
+        
+        self.formal_properties_text = scrolledtext.ScrolledText(
+            tab,
+            bg=COLORS['bg_editor'],
+            fg=COLORS['fg_primary'],
+            font=tkfont.Font(family='Consolas', size=9),
+            relief=tk.FLAT,
+            padx=15,
+            pady=15,
+            wrap=tk.WORD
+        )
+        self.formal_properties_text.pack(fill=tk.BOTH, expand=True)
+        
+        # Generar y mostrar análisis de propiedades formales
+        analyzer = FormalPropertiesAnalyzer()
+        content = analyzer.analyze_all_properties()
+        content += "\nNOTA: Este análisis completa el Punto 10: Propiedades de Cerradura y Decidibilidad\n"
+        
+        self.formal_properties_text.insert('1.0', content)
+        self.formal_properties_text.config(state='disabled')
     
     def create_status_bar(self, parent):
         """Crea la barra de estado"""
