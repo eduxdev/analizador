@@ -315,9 +315,10 @@ class PythonCompilerIDE:
             'Custom.TNotebook.Tab',
             background=COLORS['bg_light'],
             foreground=COLORS['fg_primary'],
-            padding=[15, 10],
+            padding=[12, 8],
             font=('Segoe UI', 9, 'bold'),
-            focuscolor='none'
+            focuscolor='none',
+            width=12
         )
         self.style.map(
             'Custom.TNotebook.Tab',
@@ -347,7 +348,7 @@ class PythonCompilerIDE:
     def create_lexical_tab(self):
         """Crea la pestaña de Análisis Léxico"""
         tab = tk.Frame(self.notebook, bg=COLORS['bg_editor'])
-        self.notebook.add(tab, text="🔤 Léxico")
+        self.notebook.add(tab, text="🔤 Léxico   ")
         
         self.lexical_text = scrolledtext.ScrolledText(
             tab,
@@ -363,7 +364,7 @@ class PythonCompilerIDE:
     def create_syntax_tab(self):
         """Crea la pestaña de Análisis Sintáctico"""
         tab = tk.Frame(self.notebook, bg=COLORS['bg_editor'])
-        self.notebook.add(tab, text="🌲 Sintáctico")
+        self.notebook.add(tab, text="🌲 Sintáctic")
         
         self.syntax_text = scrolledtext.ScrolledText(
             tab,
@@ -379,7 +380,7 @@ class PythonCompilerIDE:
     def create_semantic_tab(self):
         """Crea la pestaña de Análisis Semántico"""
         tab = tk.Frame(self.notebook, bg=COLORS['bg_editor'])
-        self.notebook.add(tab, text="🔬 Semántico")
+        self.notebook.add(tab, text="🔬 Semántic")
         
         self.semantic_text = scrolledtext.ScrolledText(
             tab,
@@ -395,7 +396,7 @@ class PythonCompilerIDE:
     def create_intermediate_code_tab(self):
         """Crea la pestaña de Código Intermedio"""
         tab = tk.Frame(self.notebook, bg=COLORS['bg_editor'])
-        self.notebook.add(tab, text="⚡ Intermedio")
+        self.notebook.add(tab, text="⚡ Intermed")
         
         self.intermediate_text = scrolledtext.ScrolledText(
             tab,
@@ -411,7 +412,7 @@ class PythonCompilerIDE:
     def create_optimization_tab(self):
         """Crea la pestaña de Optimización"""
         tab = tk.Frame(self.notebook, bg=COLORS['bg_editor'])
-        self.notebook.add(tab, text="🎯 Optimizar")
+        self.notebook.add(tab, text="🎯 Optimiz ")
         
         self.optimization_text = scrolledtext.ScrolledText(
             tab,
@@ -427,7 +428,7 @@ class PythonCompilerIDE:
     def create_machine_code_tab(self):
         """Crea la pestaña de Código Máquina"""
         tab = tk.Frame(self.notebook, bg=COLORS['bg_editor'])
-        self.notebook.add(tab, text="🖥️ Máquina")
+        self.notebook.add(tab, text="🖥️ Máquina ")
         
         self.machine_code_text = scrolledtext.ScrolledText(
             tab,
@@ -443,7 +444,7 @@ class PythonCompilerIDE:
     def create_execution_tab(self):
         """Crea la pestaña de Ejecución"""
         tab = tk.Frame(self.notebook, bg=COLORS['bg_editor'])
-        self.notebook.add(tab, text="🎮 Ejecución")
+        self.notebook.add(tab, text="🎮 Ejecutar")
         
         self.execution_text = scrolledtext.ScrolledText(
             tab,
@@ -459,7 +460,7 @@ class PythonCompilerIDE:
     def create_semantic_rules_tab(self):
         """Crea la pestaña de Reglas Semánticas"""
         tab = tk.Frame(self.notebook, bg=COLORS['bg_editor'])
-        self.notebook.add(tab, text="📋 Reglas")
+        self.notebook.add(tab, text="📋 Reglas  ")
         
         # Crear notebook interno para las fases
         rules_notebook = ttk.Notebook(tab, style='Custom.TNotebook')
@@ -501,7 +502,7 @@ class PythonCompilerIDE:
     def create_grammar_tab(self):
         """Crea la pestaña de Gramática"""
         tab = tk.Frame(self.notebook, bg=COLORS['bg_editor'])
-        self.notebook.add(tab, text="📜 Gramática")
+        self.notebook.add(tab, text="📜 Gramátic")
         
         grammar_text = scrolledtext.ScrolledText(
             tab,
@@ -520,7 +521,7 @@ class PythonCompilerIDE:
     def create_lr_parser_tab(self):
         """Crea la pestaña de Análisis LR con Tabla de Parsing"""
         tab = tk.Frame(self.notebook, bg=COLORS['bg_editor'])
-        self.notebook.add(tab, text="🔧 Parser LR")
+        self.notebook.add(tab, text="🔧 ParserLR")
         
         self.lr_parser_text = scrolledtext.ScrolledText(
             tab,
@@ -548,7 +549,7 @@ class PythonCompilerIDE:
     def create_formal_properties_tab(self):
         """Crea la pestaña de Propiedades Formales"""
         tab = tk.Frame(self.notebook, bg=COLORS['bg_editor'])
-        self.notebook.add(tab, text="🎓 Propiedades")
+        self.notebook.add(tab, text="🎓 Propieda")
         
         self.formal_properties_text = scrolledtext.ScrolledText(
             tab,
